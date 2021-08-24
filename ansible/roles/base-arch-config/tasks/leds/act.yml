@@ -1,0 +1,11 @@
+---
+- name: disable ACT (green) LED
+  become: yes
+  become_user: root
+  blockinfile:
+    path: /boot/config.txt
+    block: |
+
+      # Disable the ACT LED.
+      dtparam=act_led_trigger=none
+      dtparam=act_led_activelow=off

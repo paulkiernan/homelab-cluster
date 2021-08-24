@@ -1,0 +1,15 @@
+---
+- name: Reboot to activate changes
+  become: yes
+  become_user: root
+  reboot:
+    reboot_timeout: 1800 # Reboot can take a while. So more than 10 Minutes (default timeout) to reboot and be back online can be normal.
+
+- name: Wait until hosts rebooted
+  become: yes
+  become_user: root
+  wait_for_connection:  
+    timeout: 120
+
+- pause:
+    seconds: 20

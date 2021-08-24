@@ -1,0 +1,10 @@
+---
+- hosts: all
+  any_errors_fatal: true
+  roles:
+    - base-arch-config
+
+- hosts: all
+  any_errors_fatal: true
+  roles:
+    - reboot

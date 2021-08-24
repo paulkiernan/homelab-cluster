@@ -1,0 +1,11 @@
+---
+- name: disable PWR (red) LED
+  become: yes
+  become_user: root
+  blockinfile:
+    path: /boot/config.txt
+    block: |
+
+      # Disable the PWR LED.
+      dtparam=pwr_led_trigger=none
+      dtparam=pwr_led_activelow=off

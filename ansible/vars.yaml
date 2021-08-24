@@ -1,0 +1,9 @@
+# The leds can be annoying. You can disable them.
+# The PWR (a red LED) and ACT (a green LED) of the RaspberryPi. Possible
+# variables: 'true' to disable the led or 'false' to skip this role.
+pwr_led_disabled: true
+act_led_disabled: true
+
+# Set staticDNS Server for the cluster, necessary, f.e. in case piHole isn't
+# up. Otherwise, if piHole is the central DNS, images could not be pulled.
+staticDNS: 192.168.7.1

@@ -1,0 +1,43 @@
+---
+- name: create aur_builder
+  become: yes
+  become_user: root
+  user:
+    name: aur_builder
+    group: wheel
+
+- name: setup sudoers file for aur_builder
+  become: yes
+  become_user: root
+  lineinfile:
+    path: /etc/sudoers.d/11-install-aur_builder
+    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    create: yes
+    validate: 'visudo -cf %s'
+
+- name: install base-devel
+  become: yes
+  become_user: root
+  pacman:
+      name: base-devel
+      state: present
+
+- name: install git
+  become: yes
+  become_user: root
+  pacman:
+      name: git
+      state: present
+
+- name: install go
+  become: yes
+  become_user: root
+  pacman:
+      name: go
+      state: present
+
+- name: install yay
+  become: yes
+  become_user: aur_builder
+  aur:
+    name: yay

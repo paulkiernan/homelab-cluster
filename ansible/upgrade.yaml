@@ -1,0 +1,10 @@
+---
+- hosts: all
+  any_errors_fatal: true
+  roles:
+    - arch-upgrade
+
+- hosts: all
+  any_errors_fatal: true
+  roles:
+    - reboot
