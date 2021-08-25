@@ -1,7 +1,0 @@
----
-- name: install conntrack-tools
-  become: yes
-  become_user: root
-  pacman:
-    name: conntrack-tools
-    state: present

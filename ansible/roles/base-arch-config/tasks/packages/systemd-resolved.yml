@@ -4,14 +4,14 @@
   become_user: root
   service:
     name: systemd-resolved.service
-    enabled: yes 
+    enabled: yes
     state: started
 
 - name: Ensures /etc/systemd/resolved.conf.d/ dir exists
   become: yes
   become_user: root
-  file: 
-    path: /etc/systemd/resolved.conf.d/ 
+  file:
+    path: /etc/systemd/resolved.conf.d/
     state: directory
 
 - name: copy dns_servers.conf
@@ -20,3 +20,10 @@
   template:
     src: dns_servers.conf
     dest: /etc/systemd/resolved.conf.d/dns_servers.conf
+
+- name: copy /etc/systemd/network/50-flannel.link
+  become: yes
+  become_user: root
+  template:
+    src: flannel.conf
+    dest: /etc/systemd/network/50-flannel.link

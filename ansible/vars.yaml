@@ -6,4 +6,4 @@ act_led_disabled: true
 
 # Set staticDNS Server for the cluster, necessary, f.e. in case piHole isn't
 # up. Otherwise, if piHole is the central DNS, images could not be pulled.
-staticDNS: 192.168.7.1
+staticDNS: 1.1.1.1

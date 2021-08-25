@@ -4,5 +4,5 @@
   become_user: root
   service:
     name: systemd-timesyncd.service
-    enabled: yes 
+    enabled: yes
     state: started

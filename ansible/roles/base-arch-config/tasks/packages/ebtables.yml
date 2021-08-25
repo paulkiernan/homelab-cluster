@@ -1,7 +1,0 @@
----
-- name: install ebtables
-  become: yes
-  become_user: root
-  pacman:
-    name: ebtables
-    state: present

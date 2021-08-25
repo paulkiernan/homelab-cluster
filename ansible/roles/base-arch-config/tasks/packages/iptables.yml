@@ -1,0 +1,7 @@
+---
+- name: install iptables
+  become: yes
+  become_user: root
+  pacman:
+    name: iptables
+    state: present
