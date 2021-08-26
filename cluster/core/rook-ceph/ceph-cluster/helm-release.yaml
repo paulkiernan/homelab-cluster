@@ -20,3 +20,6 @@ spec:
       enabled: true
     monitoring:
       enabled: true
+    dashboard:
+      enabled: true
+      port: 8443
