@@ -42,3 +42,13 @@ spec:
       path: /
       hosts:
         - "pihole.${SECRET_DOMAIN}"
+    customDnsEntries:
+      - "address=/pihole.${SECRET_DOMAIN}/${INGRESS_NGINX_LB}"
+      - "address=/rook-ceph.${SECRET_DOMAIN}/${INGRESS_NGINX_LB}"
+    podAnnotations:
+      prometheus.io/port: '9617'
+      prometheus.io/scrape: 'true'
+    monitoring:
+      sidecar:
+        enabled: true
+        port: 9617
