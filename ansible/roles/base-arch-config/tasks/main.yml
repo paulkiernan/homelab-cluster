@@ -35,6 +35,7 @@
 - include: packages/iptables.yml
 - include: packages/lvm.yml
 - include: packages/systemd-resolved.yml
+- include: packages/nettools.yml
 
 - include: leds/act.yml
   when: act_led_disabled
