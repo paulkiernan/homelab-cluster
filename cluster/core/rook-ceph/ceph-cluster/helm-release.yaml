@@ -25,7 +25,7 @@ spec:
       dashboard:
         enabled: true
         port: 8443
-        ssl: true
+        ssl: false
     ingress:
       dashboard:
         annotations:
