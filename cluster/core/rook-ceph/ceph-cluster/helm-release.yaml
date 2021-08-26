@@ -21,11 +21,10 @@ spec:
       enabled: true
     monitoring:
       enabled: true
-    #ingress:
-      #dashboard:
-        #annotations:
-          #kubernetes.io/ingress.class: nginx
-          #external-dns.alpha.kubernetes.io/hostname: "ceph.${SECRET_DOMAIN}"
-        #host:
-          #name: "ceph.${SECRET_DOMAIN}"
-          #path: "/"
+    ingress:
+      dashboard:
+        annotations:
+          kubernetes.io/ingress.class: nginx
+        host:
+          name: "rook-ceph.${SECRET_DOMAIN}"
+          path: "/"
