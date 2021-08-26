@@ -46,10 +46,12 @@ spec:
       customDnsEntries:
         - "address=/pihole.${SECRET_DOMAIN}/${INGRESS_NGINX_LB}"
         - "address=/rook-ceph.${SECRET_DOMAIN}/${INGRESS_NGINX_LB}"
+        - "address=/grafana.${SECRET_DOMAIN}/${INGRESS_NGINX_LB}"
     whitelist:
       - "${SECRET_DOMAIN}"
       - "pihole.${SECRET_DOMAIN}"
       - "rook-ceph.${SECRET_DOMAIN}"
+      - "grafana.${SECRET_DOMAIN}"
     podAnnotations:
       prometheus.io/port: '9617'
       prometheus.io/scrape: 'true'
