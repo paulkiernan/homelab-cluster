@@ -35,3 +35,16 @@ spec:
       enabled: true
       avoidRelease: pihole
       strict: true
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+      path: /
+      hosts:
+        - "pihole.${SECRET_DOMAIN}"
+    persistentVolumeClaim:
+      enabled: true
+      accessModes:
+        - ReadWriteMany
+      size: "500Mi"
+      storageClass: ceph-filesystem
