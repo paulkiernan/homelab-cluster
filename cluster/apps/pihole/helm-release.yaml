@@ -16,7 +16,7 @@ spec:
         name: pihole-charts
         namespace: flux-system
   values:
-    replicaCount: 1
+    replicaCount: 4
     maxSurge: 1
     maxUnavailable: 1
     serviceWeb:
@@ -31,3 +31,7 @@ spec:
       type: LoadBalancer
     DNS1: "1.1.1.1"
     DNS2: "1.0.0.1"
+    antiaff:
+      enabled: true
+      avoidRelease: pihole
+      strict: true
