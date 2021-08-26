@@ -1,0 +1,16 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ceph-operator
+  namespace: rook-ceph
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.rook.io/release
+      chart: rook-ceph
+      sourceRef:
+        kind: HelmRepository
+        name: rook-release
+        namespace: rook-ceph
+      interval: 1m
