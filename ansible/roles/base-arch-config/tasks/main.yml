@@ -74,3 +74,21 @@
     regexp: '^(\s*)([^#\n]+\s+)(\w+\s+)swap(\s+.*)$'
     replace: '#\1\2\3swap\4'
     backup: yes
+
+# Installs systemd service for enabling promisc on wlan0
+#   This is necessary for wlan0 to respond to ARP pings:
+#   https://github.com/raspberrypi/linux/issues/2677
+- name: install promiscuous-mode@.service
+  become: yes
+  become_user: root
+  template:
+    src: promiscuous-mode@.service
+    dest: /etc/systemd/system/promiscuous-mode@.service
+
+- name: start promiscuous-mode@wlan0.service
+  become: yes
+  become_user: root
+  systemd:
+    state: started
+    enabled: yes
+    name: promiscuous-mode@wlan0.service
