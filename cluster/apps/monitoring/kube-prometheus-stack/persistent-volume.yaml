@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: prometheus-pv
+  namespace: monitoring
+  labels:
+    app: prometheus-ceph-volume
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClass: "ceph-filesystem"
+  claimRef:
+    name: prometheus-pvc
+    namespace: monitoring

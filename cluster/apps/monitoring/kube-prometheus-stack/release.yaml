@@ -37,3 +37,12 @@ spec:
         podMonitorSelector:
           matchLabels:
             app.kubernetes.io/part-of: prometheus
+      storageSpec:
+        volumeClaimTemplate:
+          spec:
+            selector:
+              matchLabels:
+                app.kubernetes.io/name: prometheus-ceph-volume
+            resources:
+              requests:
+                storage: 10Gi
