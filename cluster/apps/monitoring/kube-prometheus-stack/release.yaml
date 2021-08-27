@@ -32,6 +32,7 @@ spec:
         hosts:
           - "grafana.${SECRET_DOMAIN}"
       plugins: "grafana-piechart-panel"
+      adminPassword: "${GRAFANA_DASHBOARD_PASSWORD}"
     prometheus:
       prometheusSpec:
         podMonitorSelector:

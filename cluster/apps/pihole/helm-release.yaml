@@ -59,3 +59,4 @@ spec:
       sidecar:
         enabled: true
         port: 9617
+    adminPassword: "${PIHOLE_DASHBOARD_PASSWORD}"
