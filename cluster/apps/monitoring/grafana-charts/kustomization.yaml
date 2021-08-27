@@ -3,10 +3,10 @@ kind: Kustomization
 namespace: pihole
 resources:
   - podmonitor.yaml
-configMapGenerator:
-  - name: pihole-grafana-dashboards
-    files:
-      - pi-hole-exporter_rev2.json
-    options:
-      labels:
-        grafana_dashboard: pihole
+#configMapGenerator:
+  #- name: pihole-grafana-dashboards
+    #files:
+      #- pi-hole-exporter_rev2.json
+    #options:
+      #labels:
+        #grafana_dashboard: pihole
