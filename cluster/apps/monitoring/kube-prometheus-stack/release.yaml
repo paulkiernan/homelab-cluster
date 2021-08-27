@@ -39,10 +39,8 @@ spec:
         podMonitorSelector:
           matchLabels:
             app.kubernetes.io/part-of: prometheus
-      storageSpec:
-        volumeClaimTemplate:
-          - metadata:
-              name: prometheus-rook-ceph-pvc
+        storageSpec:
+          volumeClaimTemplate:
             spec:
               accessModes: ["ReadWriteOnce"]
               storageClassName: ceph-filesystem
