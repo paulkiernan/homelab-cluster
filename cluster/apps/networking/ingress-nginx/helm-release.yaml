@@ -18,7 +18,7 @@ spec:
   values:
     controller:
       ingressClass: nginx
-      replicaCount: 1
+      replicaCount: 4
       service:
         type: LoadBalancer
         loadBalancerIP: "${INGRESS_NGINX_LB}"
@@ -39,3 +39,23 @@ spec:
           cpu: 100m
         limits:
           memory: 500Mi
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                        - ingress-nginx
+                    - key: app.kubernetes.io/instance
+                      operator: In
+                      values:
+                        - ingress-nginx
+                    - key: app.kubernetes.io/component
+                      operator: In
+                      values:
+                        - controller
+                topologyKey: kubernetes.io/hostname
