@@ -40,9 +40,8 @@ spec:
       storageSpec:
         volumeClaimTemplate:
           spec:
-            selector:
-              matchLabels:
-                app.kubernetes.io/name: prometheus-ceph-volume
+            storageClassName: "ceph-filesystem"
+            accessModes: ["ReadWriteOnce"]
             resources:
               requests:
                 storage: 10Gi
