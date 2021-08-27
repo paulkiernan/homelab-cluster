@@ -17,4 +17,4 @@ spec:
         values:
           - pihole
   podMetricsEndpoints:
-    - port: http-prom
+    - port: 9617
