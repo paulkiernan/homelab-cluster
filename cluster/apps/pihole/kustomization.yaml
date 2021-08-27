@@ -4,10 +4,10 @@ resources:
   - namespace.yaml
   - helm-release.yaml
   - podmonitor.yaml
-#configMapGenerator:
-  #- name: pihole-grafana-dashboards
-    #files:
-      #- pi-hole-exporter_rev2.json
-    #options:
-      #labels:
-        #grafana_dashboard: pihole
+configMapGenerator:
+  - name: pihole-grafana-dashboards
+    files:
+      - pi-hole-exporter.json
+    options:
+      labels:
+        grafana_dashboard: pihole

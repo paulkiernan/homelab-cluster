@@ -1,48 +1,9 @@
 {
-  "__inputs": [],
-  "__requires": [
-    {
-      "type": "panel",
-      "id": "gauge",
-      "name": "Gauge",
-      "version": ""
-    },
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "6.1.4"
-    },
-    {
-      "type": "panel",
-      "id": "grafana-piechart-panel",
-      "name": "Pie Chart",
-      "version": "1.3.6"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "singlestat",
-      "name": "Singlestat",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "table",
-      "name": "Table",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": "Prometheus",
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -51,14 +12,20 @@
       }
     ]
   },
+  "description": "This is a PI-Hole dashboard when using the https://github.com/eko/pihole-exporter Prometheus exporter",
   "editable": true,
-  "gnetId": 10176,
+  "gnetId": 14283,
   "graphTooltip": 0,
-  "id": null,
+  "id": 28,
   "links": [],
   "panels": [
     {
       "collapsed": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -72,259 +39,376 @@
     },
     {
       "cacheTimeout": null,
-      "colorBackground": true,
-      "colorPostfix": false,
-      "colorPrefix": false,
-      "colorValue": false,
-      "colors": [
-        "#d44a3a",
-        "rgba(237, 129, 40, 0.89)",
-        "#299c46"
-      ],
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": "Disabled"
+                },
+                "1": {
+                  "text": "Enabled"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#d44a3a",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0
+              },
+              {
+                "color": "#299c46",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
       },
       "gridPos": {
-        "h": 2,
-        "w": 4,
+        "h": 4,
+        "w": 3,
         "x": 0,
         "y": 1
       },
       "id": 84,
       "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "8.1.0",
       "targets": [
         {
+          "exemplar": true,
           "expr": "pihole_status",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{ legend }}",
+          "legendFormat": "{{hostname}}",
           "refId": "A"
         }
       ],
-      "thresholds": "0,1",
       "timeFrom": null,
       "timeShift": null,
       "title": "Status",
       "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "Disabled",
-          "value": "0"
+      "type": "stat"
+    },
+    {
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
         },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 2,
+        "x": 3,
+        "y": 1
+      },
+      "id": 76,
+      "links": [],
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
         {
-          "op": "=",
-          "text": "Enabled",
-          "value": "1"
+          "exemplar": true,
+          "expr": "pihole_unique_clients",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{hostname}}",
+          "refId": "A"
         }
       ],
-      "valueName": "current"
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Unique clients",
+      "type": "stat"
     },
     {
       "cacheTimeout": null,
-      "colorBackground": false,
-      "colorPostfix": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "decimals": null,
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 1,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
       },
       "gridPos": {
-        "h": 2,
-        "w": 4,
-        "x": 4,
+        "h": 4,
+        "w": 3,
+        "x": 5,
+        "y": 1
+      },
+      "id": 92,
+      "links": [],
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "pihole_ads_percentage_today / 100",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{hostname}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "% ads blocked",
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 8,
         "y": 1
       },
       "id": 80,
       "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "8.1.0",
       "targets": [
         {
+          "exemplar": true,
           "expr": "pihole_domains_being_blocked",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
+          "legendFormat": "{{hostname}}",
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "timeFrom": null,
       "timeShift": null,
       "title": "Domains being blocked",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
+      "type": "stat"
     },
     {
       "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
       },
       "gridPos": {
-        "h": 2,
-        "w": 4,
-        "x": 8,
+        "h": 4,
+        "w": 3,
+        "x": 11,
         "y": 1
       },
       "id": 82,
       "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "8.1.0",
       "targets": [
         {
+          "exemplar": true,
           "expr": "pihole_unique_domains",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
+          "legendFormat": "{{hostname}}",
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "timeFrom": null,
       "timeShift": null,
       "title": "Unique domains",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
+      "type": "stat"
     },
     {
       "aliasColors": {},
@@ -334,12 +418,13 @@
         "label": "Others",
         "threshold": 0
       },
+      "datasource": "Prometheus",
       "fontSize": "80%",
       "format": "short",
       "gridPos": {
-        "h": 7,
+        "h": 12,
         "w": 4,
-        "x": 12,
+        "x": 14,
         "y": 1
       },
       "id": 70,
@@ -357,8 +442,11 @@
       "strokeWidth": 1,
       "targets": [
         {
-          "expr": "pihole_top_queries",
+          "exemplar": true,
+          "expr": "sum by (domain) (pihole_top_queries)",
           "format": "time_series",
+          "instant": true,
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{ domain }}",
           "refId": "A"
@@ -367,7 +455,6 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Top queries by domain",
-      "transparent": true,
       "type": "grafana-piechart-panel",
       "valueName": "current"
     },
@@ -379,58 +466,13 @@
         "label": "Others",
         "threshold": 0
       },
+      "datasource": "Prometheus",
       "fontSize": "80%",
       "format": "short",
       "gridPos": {
-        "h": 7,
+        "h": 6,
         "w": 4,
-        "x": 16,
-        "y": 1
-      },
-      "id": 86,
-      "interval": null,
-      "legend": {
-        "percentage": true,
-        "show": false,
-        "values": false
-      },
-      "legendType": "On graph",
-      "links": [],
-      "maxDataPoints": 3,
-      "nullPointMode": "connected",
-      "pieType": "donut",
-      "pluginVersion": "6.1.4",
-      "strokeWidth": 1,
-      "targets": [
-        {
-          "expr": "pihole_reply",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "{{ type }}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Replies by type",
-      "transparent": true,
-      "type": "grafana-piechart-panel",
-      "valueName": "current"
-    },
-    {
-      "aliasColors": {},
-      "breakPoint": "50%",
-      "cacheTimeout": null,
-      "combine": {
-        "label": "Others",
-        "threshold": 0
-      },
-      "fontSize": "80%",
-      "format": "short",
-      "gridPos": {
-        "h": 7,
-        "w": 4,
-        "x": 20,
+        "x": 18,
         "y": 1
       },
       "id": 72,
@@ -447,8 +489,11 @@
       "strokeWidth": 1,
       "targets": [
         {
-          "expr": "pihole_top_ads",
+          "exemplar": true,
+          "expr": "sum by (domain) (pihole_top_ads)",
           "format": "time_series",
+          "instant": true,
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{ domain }}",
           "refId": "A"
@@ -457,7 +502,6 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Top ads by domain",
-      "transparent": true,
       "type": "grafana-piechart-panel",
       "valueName": "current"
     },
@@ -468,13 +512,22 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "fill": 1,
-      "gridPos": {
-        "h": 5,
-        "w": 8,
-        "x": 0,
-        "y": 3
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
       },
+      "fill": 1,
+      "fillGradient": 3,
+      "gridPos": {
+        "h": 8,
+        "w": 5,
+        "x": 0,
+        "y": 5
+      },
+      "hiddenSeries": false,
       "id": 66,
       "legend": {
         "avg": false,
@@ -489,7 +542,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "8.1.0",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -499,8 +556,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pihole_dns_queries_all_types",
+          "exemplar": true,
+          "expr": "sum(pihole_dns_queries_all_types)",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{ job }}",
           "refId": "A"
@@ -516,7 +575,6 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -527,6 +585,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:2612",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -535,152 +594,7 @@
           "show": true
         },
         {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "cacheTimeout": null,
-      "gridPos": {
-        "h": 5,
-        "w": 4,
-        "x": 8,
-        "y": 3
-      },
-      "id": 92,
-      "links": [],
-      "options": {
-        "maxValue": "100",
-        "minValue": 0,
-        "orientation": "auto",
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "thresholds": [
-          {
-            "color": "green",
-            "index": 0,
-            "value": null
-          },
-          {
-            "color": "#EAB839",
-            "index": 1,
-            "value": 40
-          },
-          {
-            "color": "red",
-            "index": 2,
-            "value": 80
-          }
-        ],
-        "valueMappings": [],
-        "valueOptions": {
-          "decimals": 2,
-          "prefix": "",
-          "stat": "mean",
-          "suffix": "",
-          "unit": "percent"
-        }
-      },
-      "pluginVersion": "6.1.4",
-      "targets": [
-        {
-          "expr": "pihole_ads_percentage_today",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 1,
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "% ads blocked",
-      "transparent": true,
-      "type": "gauge"
-    },
-    {
-      "aliasColors": {
-        "pihole": "light-red"
-      },
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 1,
-      "gridPos": {
-        "h": 5,
-        "w": 8,
-        "x": 0,
-        "y": 8
-      },
-      "id": 62,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "pihole_ads_blocked_today",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "{{ job }}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Ads blocked (today)",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
+          "$$hashKey": "object:2613",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -699,120 +613,41 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": "Prometheus",
       "fill": 1,
+      "fillGradient": 3,
       "gridPos": {
-        "h": 5,
-        "w": 8,
-        "x": 8,
-        "y": 8
+        "h": 8,
+        "w": 9,
+        "x": 5,
+        "y": 5
       },
-      "id": 68,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": true,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "pihole_queries_cached",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Queries cached",
-          "refId": "A"
-        },
-        {
-          "expr": "pihole_queries_forwarded",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Queries forwarded",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Queries cached/forwarded",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 1,
-      "gridPos": {
-        "h": 5,
-        "w": 8,
-        "x": 16,
-        "y": 8
-      },
+      "hiddenSeries": false,
       "id": 78,
       "legend": {
-        "avg": false,
+        "alignAsTable": true,
+        "avg": true,
         "current": false,
-        "max": false,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": true,
         "min": false,
+        "rightSide": true,
         "show": true,
+        "sort": "avg",
+        "sortDesc": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "8.1.0",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -822,8 +657,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pihole_querytypes",
+          "exemplar": true,
+          "expr": "sum by (type) (pihole_querytypes) / 4",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{ type }}",
           "refId": "A"
@@ -842,10 +679,9 @@
       "title": "DNS Query types",
       "tooltip": {
         "shared": true,
-        "sort": 0,
+        "sort": 2,
         "value_type": "individual"
       },
-      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -856,6 +692,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:442",
           "format": "percent",
           "label": null,
           "logBase": 1,
@@ -864,6 +701,160 @@
           "show": true
         },
         {
+          "$$hashKey": "object:443",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": 0
+      },
+      "datasource": "Prometheus",
+      "fontSize": "80%",
+      "format": "short",
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 18,
+        "y": 7
+      },
+      "id": 86,
+      "interval": null,
+      "legend": {
+        "percentage": true,
+        "show": false,
+        "values": false
+      },
+      "legendType": "On graph",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "pieType": "donut",
+      "pluginVersion": "6.1.4",
+      "strokeWidth": 1,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (type) (pihole_reply)",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{ type }}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Replies by type",
+      "type": "grafana-piechart-panel",
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fill": 1,
+      "fillGradient": 3,
+      "gridPos": {
+        "h": 8,
+        "w": 5,
+        "x": 0,
+        "y": 13
+      },
+      "hiddenSeries": false,
+      "id": 68,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.1.0",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(pihole_queries_cached)",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Queries cached",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(pihole_queries_forwarded)",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Queries forwarded",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Queries cached/forwarded",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:3066",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:3067",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -884,13 +875,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": "Prometheus",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
-        "h": 5,
-        "w": 8,
-        "x": 0,
+        "h": 8,
+        "w": 5,
+        "x": 5,
         "y": 13
       },
+      "hiddenSeries": false,
       "id": 64,
       "legend": {
         "avg": false,
@@ -905,7 +899,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "8.1.0",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -932,7 +930,6 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -943,6 +940,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:3304",
           "format": "percent",
           "label": null,
           "logBase": 1,
@@ -951,6 +949,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:3305",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -966,11 +965,12 @@
     },
     {
       "columns": [],
+      "datasource": "Prometheus",
       "fontSize": "100%",
       "gridPos": {
-        "h": 5,
-        "w": 8,
-        "x": 8,
+        "h": 15,
+        "w": 6,
+        "x": 10,
         "y": 13
       },
       "id": 74,
@@ -979,12 +979,13 @@
       "scroll": true,
       "showHeader": true,
       "sort": {
-        "col": 0,
+        "col": 2,
         "desc": true
       },
       "styles": [
         {
           "alias": "",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1003,28 +1004,30 @@
       ],
       "targets": [
         {
-          "expr": "pihole_top_queries",
-          "format": "time_series",
-          "instant": false,
+          "exemplar": true,
+          "expr": "sum by (domain) (pihole_top_queries)",
+          "format": "table",
+          "instant": true,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{ domain }}",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
       "title": "Top queries",
-      "transform": "timeseries_to_rows",
-      "transparent": true,
-      "type": "table"
+      "transform": "table",
+      "transformations": [],
+      "type": "table-old"
     },
     {
       "columns": [],
+      "datasource": "Prometheus",
       "fontSize": "100%",
       "gridPos": {
-        "h": 5,
-        "w": 8,
+        "h": 15,
+        "w": 6,
         "x": 16,
         "y": 13
       },
@@ -1034,18 +1037,20 @@
       "scroll": true,
       "showHeader": true,
       "sort": {
-        "col": 0,
+        "col": 2,
         "desc": true
       },
       "styles": [
         {
           "alias": "Time",
+          "align": "auto",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "pattern": "Time",
           "type": "date"
         },
         {
           "alias": "",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1061,8 +1066,11 @@
       ],
       "targets": [
         {
-          "expr": "pihole_top_ads",
+          "exemplar": true,
+          "expr": "sum by (domain) (pihole_top_ads)",
           "format": "time_series",
+          "instant": true,
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{ domain }}",
           "refId": "A"
@@ -1072,21 +1080,24 @@
       "timeShift": null,
       "title": "Top ads domains",
       "transform": "timeseries_to_rows",
-      "transparent": true,
-      "type": "table"
+      "type": "table-old"
     },
     {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": "Prometheus",
+      "decimals": 2,
       "fill": 1,
+      "fillGradient": 3,
       "gridPos": {
-        "h": 5,
-        "w": 12,
+        "h": 7,
+        "w": 5,
         "x": 0,
-        "y": 18
+        "y": 21
       },
+      "hiddenSeries": false,
       "id": 88,
       "legend": {
         "avg": false,
@@ -1101,7 +1112,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "8.1.0",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1111,8 +1126,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pihole_forward_destinations",
+          "exemplar": true,
+          "expr": "sum by (destination) (pihole_forward_destinations) / 4",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{ destination }}",
           "refId": "A"
@@ -1128,7 +1145,6 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -1139,6 +1155,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:3659",
           "format": "percent",
           "label": null,
           "logBase": 1,
@@ -1147,6 +1164,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:3660",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1162,21 +1180,24 @@
     },
     {
       "aliasColors": {
-        "pihole_unique_clients{hostname=\"127.0.0.1\",instance=\"localhost:9311\",job=\"pihole\"}": "rgb(255, 255, 255)",
-        "pihole_unique_domains{hostname=\"127.0.0.1\",instance=\"localhost:9311\",job=\"pihole\"}": "super-light-yellow"
+        "pihole": "light-red"
       },
-      "bars": true,
+      "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": "Prometheus",
       "fill": 1,
+      "fillGradient": 3,
       "gridPos": {
-        "h": 5,
-        "w": 12,
-        "x": 12,
-        "y": 18
+        "h": 7,
+        "w": 5,
+        "x": 5,
+        "y": 21
       },
-      "id": 76,
+      "hiddenSeries": false,
+      "id": 62,
       "legend": {
+        "alignAsTable": false,
         "avg": false,
         "current": false,
         "max": false,
@@ -1185,11 +1206,15 @@
         "total": false,
         "values": false
       },
-      "lines": false,
+      "lines": true,
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "8.1.0",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1199,10 +1224,12 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pihole_unique_clients",
+          "exemplar": true,
+          "expr": "sum(pihole_ads_blocked_today)",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "",
+          "legendFormat": "{{ job }}",
           "refId": "A"
         }
       ],
@@ -1210,13 +1237,12 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Unique clients",
+      "title": "Ads blocked (today)",
       "tooltip": {
         "shared": true,
         "sort": 0,
         "value_type": "individual"
       },
-      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -1227,7 +1253,7 @@
       },
       "yaxes": [
         {
-          "decimals": 0,
+          "$$hashKey": "object:3165",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1236,6 +1262,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:3166",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1250,15 +1277,18 @@
       }
     }
   ],
-  "refresh": false,
-  "schemaVersion": 18,
+  "refresh": "30s",
+  "schemaVersion": 30,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "pihole",
+    "prometheus"
+  ],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -1290,7 +1320,6 @@
   },
   "timezone": "",
   "title": "PI-Hole Exporter",
-  "uid": "MIBVglomg",
-  "version": 139,
-  "description": "This is a PI-Hole dashboard when using the https://github.com/eko/pihole-exporter Prometheus exporter"
+  "uid": "-H3wLn47k",
+  "version": 2
 }
