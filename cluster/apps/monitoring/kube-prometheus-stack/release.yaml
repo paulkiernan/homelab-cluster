@@ -36,6 +36,9 @@ spec:
       adminPassword: "${GRAFANA_DASHBOARD_PASSWORD}"
     prometheus:
       prometheusSpec:
+        podMonitorSelector:
+          matchLabels:
+            app.kubernetes.io/part-of: prometheus
         storageSpec:
           volumeClaimTemplate:
             spec:
@@ -44,3 +47,6 @@ spec:
               resources:
                 requests:
                   storage: 10Gi
+    prometheus-node-exporter:
+      podLabels:
+        app.kubernetes.io/part-of: prometheus
