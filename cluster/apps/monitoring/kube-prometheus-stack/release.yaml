@@ -36,8 +36,12 @@ spec:
       adminPassword: "${GRAFANA_DASHBOARD_PASSWORD}"
     prometheus:
       prometheusSpec:
-        serviceMonitorSelector:
+        podMonitorSelector:
           matchExpressions:
+            - key: app.kubernetes.io/part-of
+              operator: In
+              values:
+                - prometheus
             - key: app
               operator: In
               values:
@@ -46,9 +50,6 @@ spec:
               operator: In
               values:
                 - rook
-        podMonitorSelector:
-          matchLabels:
-            app.kubernetes.io/part-of: prometheus
         storageSpec:
           volumeClaimTemplate:
             spec:
