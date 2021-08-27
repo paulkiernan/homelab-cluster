@@ -56,6 +56,8 @@ spec:
       prometheus.io/port: '9617'
       prometheus.io/scrape: 'true'
     monitoring:
+      podMonitor:
+        enabled: true
       sidecar:
         enabled: true
         port: 9617
