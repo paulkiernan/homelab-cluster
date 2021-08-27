@@ -41,8 +41,4 @@ spec:
       storageSpec:
         volumeClaimTemplate:
           spec:
-            storageClassName: "ceph-filesystem"
-            accessModes: ["ReadWriteOnce"]
-            resources:
-              requests:
-                storage: 10Gi
+            volumeName: prometheus-rook-ceph-fs
