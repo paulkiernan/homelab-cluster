@@ -5,16 +5,13 @@ metadata:
   name: pihole
   namespace: pihole
   labels:
-    app.kubernetes.io/part-of: pihole
+    app.kubernetes.io/part-of: prometheus
 spec:
   namespaceSelector:
     matchNames:
       - pihole
   selector:
-    matchExpressions:
-      - key: app
-        operator: In
-        values:
-          - pihole
+    matchLabels:
+      app: pihole
   podMetricsEndpoints:
     - port: "9617"

@@ -35,4 +35,4 @@ spec:
       prometheusSpec:
         podMonitorSelector:
           matchLabels:
-            app.kubernetes.io/part-of: flux
+            app.kubernetes.io/part-of: prometheus
