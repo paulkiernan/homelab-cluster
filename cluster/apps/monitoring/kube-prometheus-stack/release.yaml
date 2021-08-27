@@ -36,6 +36,9 @@ spec:
       adminPassword: "${GRAFANA_DASHBOARD_PASSWORD}"
     prometheus:
       prometheusSpec:
+        serviceMonitorSelector:
+          matchLabels:
+            team: rook
         podMonitorSelector:
           matchLabels:
             app.kubernetes.io/part-of: prometheus
