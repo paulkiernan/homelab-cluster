@@ -37,8 +37,15 @@ spec:
     prometheus:
       prometheusSpec:
         serviceMonitorSelector:
-          matchLabels:
-            team: rook
+          matchExpressions:
+            - key: app
+              operator: In
+              values:
+                - prometheus-node-exporter
+            - key: team
+              operator: In
+              values:
+                - rook
         podMonitorSelector:
           matchLabels:
             app.kubernetes.io/part-of: prometheus
