@@ -1,3 +1,4 @@
+---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -40,5 +41,11 @@ spec:
             app.kubernetes.io/part-of: prometheus
       storageSpec:
         volumeClaimTemplate:
-          spec:
-            volumeName: prometheus-rook-ceph-fs
+          - metadata:
+              name: prometheus-rook-ceph-pvc
+            spec:
+              accessModes: ["ReadWriteOnce"]
+              storageClassName: ceph-filesystem
+              resources:
+                requests:
+                  storage: 10Gi
