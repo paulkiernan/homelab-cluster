@@ -3,6 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: prometheus-rook-ceph-fs
+  namespace: monitoring
 spec:
   storageClassName: ceph-filesystem
   accessModes:
