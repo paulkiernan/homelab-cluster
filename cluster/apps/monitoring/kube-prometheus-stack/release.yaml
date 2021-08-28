@@ -47,6 +47,8 @@ spec:
               resources:
                 requests:
                   storage: 10Gi
+    nodeExporter:
+      jobLabel: node-exporter
     prometheus-node-exporter:
       podLabels:
-        app.kubernetes.io/part-of: prometheus
+        jobLabel: node-exporter
