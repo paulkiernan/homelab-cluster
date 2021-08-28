@@ -36,6 +36,7 @@ spec:
       adminPassword: "${GRAFANA_DASHBOARD_PASSWORD}"
     prometheus:
       prometheusSpec:
+        serviceMonitorSelectorNilUsesHelmValues: false
         serviceMonitorNamespaceSelector: {}  # auto discover all service monitors accross all namespaces
         serviceMonitorSelector: {}  # auto discover all service monitors accross all namespaces
         podMonitorSelector:
