@@ -36,8 +36,8 @@ spec:
       adminPassword: "${GRAFANA_DASHBOARD_PASSWORD}"
     prometheus:
       prometheusSpec:
-        serviceMonitorSelectorNilUsesHelmValues: false
-        podMonitorSelectorNilUsesHelmValues: false
+        serviceMonitorSelectorNilUsesHelmValues: true
+        podMonitorSelectorNilUsesHelmValues: true
         storageSpec:
           volumeClaimTemplate:
             spec:
