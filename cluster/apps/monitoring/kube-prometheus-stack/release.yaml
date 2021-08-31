@@ -37,10 +37,7 @@ spec:
     prometheus:
       prometheusSpec:
         serviceMonitorSelectorNilUsesHelmValues: false
-        serviceMonitorNamespaceSelector: {}  # auto discover all service monitors accross all namespaces
-        serviceMonitorSelector: {}  # auto discover all service monitors accross all namespaces
         podMonitorSelectorNilUsesHelmValues: false
-        podMonitorSelector: {}
         storageSpec:
           volumeClaimTemplate:
             spec:
