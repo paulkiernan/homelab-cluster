@@ -46,3 +46,6 @@ spec:
               resources:
                 requests:
                   storage: 10Gi
+    kubelet:
+      serviceMonitor:
+        https: false
