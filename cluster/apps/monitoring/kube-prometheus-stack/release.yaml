@@ -46,7 +46,3 @@ spec:
               resources:
                 requests:
                   storage: 10Gi
-    kubelet:
-      serviceMonitor:
-        resource: true
-        resourcePath: "/metrics/resource"
