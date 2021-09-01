@@ -1,7 +1,0 @@
----
-- name: install net-tools
-  become: yes
-  become_user: root
-  pacman:
-    name: net-tools
-    state: present
