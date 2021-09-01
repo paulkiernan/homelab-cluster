@@ -2,7 +2,7 @@
 - hosts: all
   any_errors_fatal: true
   roles:
-    - base-arch-config
+    - base-ubuntu-server-config
 
 - hosts: all
   any_errors_fatal: true

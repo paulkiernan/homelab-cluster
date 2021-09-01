@@ -8,7 +8,7 @@
 - name: Wait until hosts rebooted
   become: yes
   become_user: root
-  wait_for_connection:  
+  wait_for_connection:
     timeout: 120
 
 - pause:

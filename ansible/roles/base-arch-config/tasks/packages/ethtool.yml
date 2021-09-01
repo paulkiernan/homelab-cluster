@@ -1,7 +1,0 @@
----
-- name: install ethtool
-  become: yes
-  become_user: root
-  pacman:
-    name: ethtool
-    state: present
