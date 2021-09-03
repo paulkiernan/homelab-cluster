@@ -7,3 +7,4 @@ resources:
   - system-upgrade
   - pihole
   - monitoring
+  - speedtest-exporter
