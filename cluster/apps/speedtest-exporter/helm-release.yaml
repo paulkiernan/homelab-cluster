@@ -21,4 +21,4 @@ spec:
     prometheus:
       podMonitor:
         enabled: true
-        interval: 5m
+        interval: 1h
