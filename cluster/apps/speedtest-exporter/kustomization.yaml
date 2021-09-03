@@ -4,3 +4,10 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - helm-release.yaml
+configMapGenerator:
+  - name: speedteest-exporter-dashboard
+    files:
+      - dashboard.json
+    options:
+      labels:
+        grafana_dashboard: speedtest
