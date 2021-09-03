@@ -32,6 +32,21 @@
   become: yes
   become_user: root
   systemd:
-    state: started
-    enabled: yes
+    state: stopped
+    enabled: false
     name: promiscuous-mode@wlan0.service
+
+# Disable WiFi now that we're on a wired network
+- name: mask wpa_supplicant.service
+  become: yes
+  become_user: root
+  systemd:
+    masked: yes
+    name: wpa_supplicant.service
+
+- name: stop netplan-wpa-wlan0.service
+  become: yes
+  become_user: root
+  systemd:
+    masked: yes
+    name: netplan-wpa-wlan0.service

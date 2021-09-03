@@ -1,0 +1,11 @@
+[Unit]
+Description=Disable network interface
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/ip link set %i down
+ExecStart=/sbin/ip link set %i up
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
