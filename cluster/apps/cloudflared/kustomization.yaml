@@ -5,5 +5,4 @@ resources:
   - namespace.yaml
   - secret.sops.yaml
   - configmap.yaml
-  - app.yaml
   - deployment.yaml
