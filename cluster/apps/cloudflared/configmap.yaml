@@ -11,5 +11,5 @@ data:
     metrics: 0.0.0.0:2000
     no-autoupdate: true
     ingress:
-    - hostname: tunnel.bonjourinc.com
-      service: http://web-service:80
+    - hostname: grafana.bonjourinc.com
+      service: http://kube-prometheus-stack-grafana:80
