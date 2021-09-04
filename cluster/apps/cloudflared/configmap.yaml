@@ -13,3 +13,4 @@ data:
     ingress:
     - hostname: grafana.bonjourinc.com
       service: http://kube-prometheus-stack-grafana:80
+    - service: http_status:404
