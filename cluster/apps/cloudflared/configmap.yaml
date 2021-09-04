@@ -6,7 +6,7 @@ metadata:
   namespace: cloudflared
 data:
   config.yaml: |
-    tunnel: bonjourinc-tunnel
+    tunnel: bonjourinc
     credentials-file: /etc/cloudflared/creds/credentials.json
     metrics: 0.0.0.0:2000
     no-autoupdate: true
