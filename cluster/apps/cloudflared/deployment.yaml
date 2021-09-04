@@ -19,6 +19,8 @@ spec:
           image: buildsociety/cloudflared:2020.10.2
           args:
             - cloudflared
+            - --credentials-file
+            - /etc/cloudflared/creds
             - tunnel
             - --config
             - /etc/cloudflared/config/config.yaml
