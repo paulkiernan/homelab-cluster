@@ -36,7 +36,7 @@ spec:
               mountPath: /etc/cloudflared/config
               readOnly: true
             - name: creds
-              mountPath: /etc/cloudflared/credentials.json
+              mountPath: /etc/cloudflared/creds
               readOnly: true
       volumes:
         - name: creds
