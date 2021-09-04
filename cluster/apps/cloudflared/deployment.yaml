@@ -39,7 +39,7 @@ spec:
               mountPath: /etc/cloudflared/creds
               readOnly: true
       volumes:
-        - name: creds
+        - name: credentials.json
           secret:
             secretName: cloudflared-tunnel-credentials
         - name: config
