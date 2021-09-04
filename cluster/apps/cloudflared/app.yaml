@@ -24,6 +24,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: web-service
+  namespace: cloudflared
 spec:
   selector:
     app: httpbin
