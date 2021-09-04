@@ -430,7 +430,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by (domain) (pihole_top_queries)",
+          "expr": "sort(sum by (domain) (pihole_top_queries))",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -477,7 +477,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by (domain) (pihole_top_ads)",
+          "expr": "sort(sum by (domain) (pihole_top_ads))",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -714,7 +714,7 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:490",
+          "$hashKey": "object:490",
           "format": "percent",
           "label": null,
           "logBase": 1,
@@ -723,7 +723,7 @@
           "show": true
         },
         {
-          "$$hashKey": "object:491",
+          "$hashKey": "object:491",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -771,7 +771,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by (type) (pihole_reply)",
+          "expr": "sort(sum by (type) (pihole_reply))",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -1247,5 +1247,5 @@
   "timezone": "",
   "title": "PI-Hole Exporter",
   "uid": "-H3wLn47k",
-  "version": 3
+  "version": 1
 }
