@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: cloudflared
-          image: buildsociety/cloudflared:2020.10.2
+          image: ghcr.io/paulkiernan/cloudflared:2021.8.7-arm64
           args:
             - cloudflared
             - tunnel
