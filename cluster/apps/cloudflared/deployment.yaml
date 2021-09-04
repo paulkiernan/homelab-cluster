@@ -19,12 +19,11 @@ spec:
           image: buildsociety/cloudflared:2020.10.2
           args:
             - cloudflared
-            - --credentials-file
-            - /etc/cloudflared/creds
             - tunnel
             - --config
             - /etc/cloudflared/config/config.yaml
             - run
+            - 09925797-6349-431c-abc6-aeca6a18c50f
           livenessProbe:
             httpGet:
               path: /ready
