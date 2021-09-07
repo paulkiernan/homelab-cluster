@@ -18,7 +18,6 @@ spec:
         - name: cloudflared
           image: ghcr.io/paulkiernan/cloudflared:2021.8.7-arm64
           args:
-            - cloudflared
             - tunnel
             - --config
             - /etc/cloudflared/config/config.yaml
