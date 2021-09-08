@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -17,13 +18,13 @@ spec:
         app: taqueria-bonjour
     spec:
       containers:
-      - name: frontend
-        image: ghcr.io/paulkiernan/taqueria-bonjour-frontend:1.2.0
-        imagePullPolicy: IfNotPresent
-        env:
-        - name: REACT_APP_BACKEND_API_URL
-          value: "https://bonjour.paulynomial.com/api"
-        - name: REACT_APP_GOOGLE_ANALYTICS_ENABLE_DEBUG
-          value: "false"
-        ports:
-        - containerPort: 80
+        - name: frontend
+          image: ghcr.io/paulkiernan/taqueria-bonjour-frontend:2.0.0
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: REACT_APP_BACKEND_API_URL
+              value: "https://bonjour.paulynomial.com/api"
+            - name: REACT_APP_GOOGLE_ANALYTICS_ENABLE_DEBUG
+              value: "false"
+          ports:
+            - containerPort: 80

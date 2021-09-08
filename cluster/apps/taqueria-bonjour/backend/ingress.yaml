@@ -1,3 +1,4 @@
+---
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
@@ -10,27 +11,27 @@ metadata:
     app: taqueria-bonjour
 spec:
   rules:
-  - host: bonjourinc.com
-    http:
-      paths:
-      - path: /api(/|$)(.*)
-        pathType: Prefix
-        backend:
-          serviceName: backend
-          servicePort: 8080
-  - host: bonjour.bonjourinc.com
-    http:
-      paths:
-      - path: /api(/|$)(.*)
-        pathType: Prefix
-        backend:
-          serviceName: backend
-          servicePort: 8080
-  - host: "bonjour.${SECRET_DOMAIN}"
-    http:
-      paths:
-      - path: /api(/|$)(.*)
-        pathType: Prefix
-        backend:
-          serviceName: backend
-          servicePort: 8080
+    - host: bonjourinc.com
+      http:
+        paths:
+          - path: /api(/|$)(.*)
+            pathType: Prefix
+            backend:
+              serviceName: backend
+              servicePort: 8080
+    - host: bonjour.bonjourinc.com
+      http:
+        paths:
+          - path: /api(/|$)(.*)
+            pathType: Prefix
+            backend:
+              serviceName: backend
+              servicePort: 8080
+    - host: "bonjour.${SECRET_DOMAIN}"
+      http:
+        paths:
+          - path: /api(/|$)(.*)
+            pathType: Prefix
+            backend:
+              serviceName: backend
+              servicePort: 8080
