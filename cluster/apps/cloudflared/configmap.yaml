@@ -12,5 +12,5 @@ data:
     no-autoupdate: true
     ingress:
     - hostname: grafana.bonjourinc.com
-      service: http://kube-prometheus-stack-grafana:80
+      service: http://kube-prometheus-stack-grafana.monitoring.svc.cluster.local:80
     - service: http_status:404
