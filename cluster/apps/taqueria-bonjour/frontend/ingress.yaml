@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: frontend
+  namespace: taqueria-bonjour
+  labels:
+    app: taqueria-bonjour
+spec:
+  rules:
+  - host: bonjourinc.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          serviceName: frontend
+          servicePort: 80
+  - host: bonjour.bonjourinc.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          serviceName: frontend
+          servicePort: 80
