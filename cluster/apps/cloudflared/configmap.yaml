@@ -13,6 +13,6 @@ data:
     ingress:
     - hostname: bonjourinc.com
       service: https://ingress-nginx-controller.networking.svc.cluster.local:443
-    - hostname: *.bonjourinc.com
+    - hostname: "*.bonjourinc.com"
       service: https://ingress-nginx-controller.networking.svc.cluster.local:443
     - service: http_status:404
