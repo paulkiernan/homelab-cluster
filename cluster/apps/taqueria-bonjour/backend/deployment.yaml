@@ -28,17 +28,17 @@ spec:
         - name: TWILIO_ACCOUNT_SID
           valueFrom:
             secretKeyRef:
-              name: twilio
+              name: taqueria-bonjour-twilio
               key: account_sid
         - name: TWILIO_AUTH_TOKEN
           valueFrom:
             secretKeyRef:
-              name: twilio
+              name: taqueria-bonjour-twilio
               key: auth_token
         - name: TWILIO_ORIGIN_NUMBER
           valueFrom:
             secretKeyRef:
-              name: twilio
+              name: taqueria-bonjour-twilio
               key: origin_number
         ports:
         - containerPort: 8080
