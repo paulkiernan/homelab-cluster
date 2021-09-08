@@ -24,3 +24,11 @@ spec:
         backend:
           serviceName: frontend
           servicePort: 80
+  - host: "bonjour.${SECRET_DOMAIN}"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          serviceName: frontend
+          servicePort: 80
