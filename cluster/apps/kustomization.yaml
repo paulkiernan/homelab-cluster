@@ -11,3 +11,4 @@ resources:
   - speedtest-exporter
   - cloudflared
   - taqueria-bonjour
+  - paulynomial-index

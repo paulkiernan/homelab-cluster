@@ -1,0 +1,86 @@
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: paulynomial
+  namespace: paulynomial-index
+  labels:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+    - host: paulynomial.com
+      http:
+        paths:
+          - backend:
+              serviceName: paulynomial-index
+              servicePort: 80
+            path: /
+            pathType: Prefix
+    - host: www.paulynomial.com
+      http:
+        paths:
+          - backend:
+              serviceName: paulynomial-index
+              servicePort: 80
+            path: /
+            pathType: Prefix
+    - host: paul.bonjourinc.com
+      http:
+        paths:
+          - backend:
+              serviceName: paulynomial-index
+              servicePort: 80
+            path: /
+            pathType: Prefix
+    - host: "paul.${SECRET_DOMAIN}"
+      http:
+        paths:
+          - backend:
+              serviceName: paulynomial-index
+              servicePort: 80
+            path: /
+            pathType: Prefix
+
+---
+
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/permanent-redirect: https://paulynomial.com
+  name: paulinomial-redirect
+  namespace: paulynomial-index
+spec:
+  rules:
+    - host: paulinomial.com
+      http:
+        paths:
+          - backend:
+              serviceName: paulynomial-index
+              servicePort: 80
+            path: /
+            pathType: Prefix
+    - host: www.paulinomial.com
+      http:
+        paths:
+          - backend:
+              serviceName: paulynomial-index
+              servicePort: 80
+            path: /
+            pathType: Prefix
+    - host: paul-kiernan.com
+      http:
+        paths:
+          - backend:
+              serviceName: paulynomial-index
+              servicePort: 80
+            path: /
+            pathType: Prefix
+    - host: www.paul-kiernan.com
+      http:
+        paths:
+          - backend:
+              serviceName: paulynomial-index
+              servicePort: 80
+            path: /
+            pathType: Prefix
