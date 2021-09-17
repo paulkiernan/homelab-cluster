@@ -49,6 +49,7 @@ spec:
         - "address=/grafana.${SECRET_DOMAIN}/${INGRESS_NGINX_LB}"
         - "address=/bonjour.${SECRET_DOMAIN}/${INGRESS_NGINX_LB}"
         - "address=/paul.${SECRET_DOMAIN}/${INGRESS_NGINX_LB}"
+        - "address=/gibson.${SECRET_DOMAIN}/${INGRESS_NGINX_LB}"
     whitelist:
       - "${SECRET_DOMAIN}"
       - "pihole.${SECRET_DOMAIN}"
@@ -56,6 +57,7 @@ spec:
       - "grafana.${SECRET_DOMAIN}"
       - "bonjour.${SECRET_DOMAIN}"
       - "paul.${SECRET_DOMAIN}"
+      - "gibson.${SECRET_DOMAIN}"
     podAnnotations:
       prometheus.io/port: '9617'
       prometheus.io/scrape: 'true'

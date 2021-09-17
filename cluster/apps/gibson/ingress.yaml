@@ -1,0 +1,26 @@
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  name: gibson-webgl-ingress
+  namespace: gibson
+spec:
+  rules:
+    - host: gibson.paulynomial.com
+      http:
+        paths:
+          - backend:
+              serviceName: gibson-webgl-service
+              servicePort: 8080
+            path: /
+            pathType: Prefix
+    - host: "gibson.${SECRET_DOMAIN}"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              serviceName: frontend
+              servicePort: 80
