@@ -22,5 +22,5 @@ spec:
           - path: /
             pathType: Prefix
             backend:
-              serviceName: frontend
-              servicePort: 80
+              serviceName: gibson-webgl-service
+              servicePort: 8080
