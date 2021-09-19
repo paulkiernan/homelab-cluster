@@ -17,6 +17,7 @@ spec:
       containers:
         - name: cloudflared
           image: ghcr.io/paulkiernan/cloudflared:2021.8.7-arm64
+          imagePullPolicy: IfNotPresent
           args:
             - tunnel
             - --config

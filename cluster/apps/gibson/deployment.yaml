@@ -19,7 +19,7 @@ spec:
       containers:
         - name: gibson-webgl
           image: ghcr.io/paulkiernan/gibson-webgl:2.0.0
-          imagePullPolicy: Always
+          imagePullPolicy: ifNotPresent
           ports:
             - containerPort: 8080
           livenessProbe:
