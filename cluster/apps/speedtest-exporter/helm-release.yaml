@@ -5,7 +5,7 @@ metadata:
   name: speedtest-exporter
   namespace: speedtest-exporter
 spec:
-  interval: 1h
+  interval: 24h
   chart:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
@@ -21,4 +21,4 @@ spec:
     prometheus:
       podMonitor:
         enabled: true
-        interval: 3h
+        interval: 1h
