@@ -1,0 +1,13 @@
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/permanent-redirect: https://paulkiernan.github.io/paulynomial-uptime
+    kubernetes.io/ingress.class: nginx
+  name: upptime-redirect
+  namespace: upptime
+spec:
+  rules:
+    - host: uptime.paulynomial.com
+    - host: upptime.paulynomial.com

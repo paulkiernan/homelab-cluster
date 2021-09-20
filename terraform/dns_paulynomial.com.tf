@@ -36,6 +36,22 @@ resource "cloudflare_record" "gibson_paulynomial_CNAME" {
   proxied = true
 }
 
+resource "cloudflare_record" "uptime_paulynomial_CNAME" {
+  zone_id = data.cloudflare_zones.paulynomial_com.zones[0].id
+  type    = "CNAME"
+  name    = "uptime"
+  value   = "09925797-6349-431c-abc6-aeca6a18c50f.cfargotunnel.com"
+  proxied = true
+}
+
+resource "cloudflare_record" "upptime_paulynomial_CNAME" {
+  zone_id = data.cloudflare_zones.paulynomial_com.zones[0].id
+  type    = "CNAME"
+  name    = "upptime"
+  value   = "09925797-6349-431c-abc6-aeca6a18c50f.cfargotunnel.com"
+  proxied = true
+}
+
 # Mailgun
 resource "cloudflare_record" "email_paulynomial_CNAME" {
   zone_id = data.cloudflare_zones.paulynomial_com.zones[0].id
