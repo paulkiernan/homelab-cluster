@@ -8,7 +8,6 @@ resources:
   - system-upgrade
   - pihole
   - monitoring
-  - speedtest-exporter
   - cloudflared
   - taqueria-bonjour
   - paulynomial-index
