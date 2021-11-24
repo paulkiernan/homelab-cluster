@@ -6,6 +6,7 @@ resources:
   - podmonitor.yaml
 configMapGenerator:
   - name: pihole-grafana-dashboards
+    namespace: monitoring
     files:
       - grafana-dashboard.json
     options:
